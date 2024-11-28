@@ -21,6 +21,7 @@ Este endpoint recibe dos parámetros en la URL (`lat` y `long`) que representan 
 
 ```bash
 GET /api/recomendacion/locaciones?lat=13.000001&long=13.000002
+```
 
 ==========================================================================================================
 ==========================================================================================================
@@ -57,7 +58,7 @@ El `ServicioTecnicoCercanoController` es responsable de manejar las solicitudes 
     "latitud": double,
     "longitud": double
   }
-  ```
+  
 
 **Flujo de Trabajo:**
 1. El cliente envía una solicitud HTTP POST con un JSON que contiene el punto central y una lista de ubicaciones.
