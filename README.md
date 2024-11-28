@@ -21,3 +21,46 @@ Este endpoint recibe dos parámetros en la URL (`lat` y `long`) que representan 
 
 ```bash
 GET /api/recomendacion/locaciones?lat=13.000001&long=13.000002
+
+==========================================================================================================
+==========================================================================================================
+==========================================================================================================
+
+**Servicio: `Servicio de Ubicacion mas Cercana`**
+### Documentación Funcional
+
+**Descripción:**
+El `ServicioTecnicoCercanoController` es responsable de manejar las solicitudes a la API que recibe un JSON con varias latitudes y longitudes. El objetivo es identificar el punto central y encontrar la ubicación más cercana a este punto central.
+
+**Entradas:**
+- JSON con la estructura:
+  ```json
+  {
+    "centro": {
+      "latitud": double,
+      "longitud": double
+    },
+    "ubicaciones": [
+      {
+        "latitud": double,
+        "longitud": double
+      },
+      ...
+    ]
+  }
+  ```
+
+**Salidas:**
+- JSON con la ubicación más cercana al punto central:
+  ```json
+  {
+    "latitud": double,
+    "longitud": double
+  }
+  ```
+
+**Flujo de Trabajo:**
+1. El cliente envía una solicitud HTTP POST con un JSON que contiene el punto central y una lista de ubicaciones.
+2. El `ServicioTecnicoCercanoController` procesa la solicitud y deserializa el JSON.
+3. Se llama al servicio `ServicioUbicacionTecnicos` para calcular la ubicación más cercana al punto central.
+4. El controlador devuelve la ubicación más cercana en formato JSON.
