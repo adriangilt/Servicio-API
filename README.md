@@ -38,15 +38,22 @@ El `ServicioTecnicoCercanoController` es responsable de manejar las solicitudes 
   ```json
   {
     "centro": {
-      "latitud": double,
-      "longitud": double
+      "latitud": 0.0,
+      "longitud": 0.0
     },
     "ubicaciones": [
       {
-        "latitud": double,
-        "longitud": double
+        "latitud": 1.0,
+        "longitud": 1.0
       },
-      ...
+      {
+        "latitud": 2.0,
+        "longitud": 2.0
+      },
+      {
+        "latitud": 3.0,
+        "longitud": 3.0
+      }
     ]
   }
   ```
