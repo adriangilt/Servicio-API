@@ -6,16 +6,14 @@ import io.javalin.http.Context;
 import servicio.dto.PuntoDeColocacion;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class ServicioController implements Handler {
+public class ServicioHeladeraController implements Handler {
 
     private ServicioUbicacionHeladeras servicioUbicacionHeladeras;
 
 
-    public ServicioController() {
+    public ServicioHeladeraController() {
         super();
 
         this.servicioUbicacionHeladeras = new ServicioUbicacionHeladeras();

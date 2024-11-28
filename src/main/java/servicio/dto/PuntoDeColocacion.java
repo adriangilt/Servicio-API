@@ -8,19 +8,31 @@ public class PuntoDeColocacion {
     private Double latitud;
     private Double longitud;
 
+
+    public PuntoDeColocacion() {
+    }
+
     // Constructor
     public PuntoDeColocacion(Double latitud, Double longitud) {
         this.latitud = latitud;
         this.longitud = longitud;
     }
 
-    // Getters
-    public Double getLatitud() {
+    // Getters y Setters
+    public double getLatitud() {
         return latitud;
     }
 
-    public Double getLongitud() {
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
         return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 
 

@@ -3,7 +3,8 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 
 import io.javalin.Javalin;
-import servicio.ServicioController;
+import servicio.ServicioHeladeraController;
+import servicio.ServicioTecnicoCercanoController;
 
 
 public class Router {
@@ -15,7 +16,11 @@ public class Router {
         app.routes(() -> {
 
             path("/api/recomendacion/locaciones", () -> {
-                get(new ServicioController());
+                get(new ServicioHeladeraController());
+            });
+
+            path("/api/recomendacion/tecnicoCercano", () -> {
+                get(new ServicioTecnicoCercanoController());
             });
 
             path("/404Error", () -> {
