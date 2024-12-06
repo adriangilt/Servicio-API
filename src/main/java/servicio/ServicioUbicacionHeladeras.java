@@ -37,27 +37,32 @@ public class ServicioUbicacionHeladeras {
             List<Object[]> resultados = em.createNativeQuery("SELECT latitud, longitud FROM punto_estrategico")
                     .getResultList();
 
-            // Mapear los resultados crudos a objetos PuntoDeColocacion
-            List<PuntoDeColocacion> puntos = resultados.stream()
-                    .map(row -> new PuntoDeColocacion(((Number) row[0]).doubleValue(), ((Number) row[1]).doubleValue()))
-                    .collect(Collectors.toList());
-
-            System.out.println(puntos.get(0).getLatitud());
-
-            // Filtrar y ordenar los puntos
-            List<PuntoDeColocacion> puntosFiltrados = new ArrayList<>();
-            for (PuntoDeColocacion punto : puntos) {
-                if (calcularDistancia(latitud, longitud, punto.getLatitud(), punto.getLongitud()) <= radio) {
-                    puntosFiltrados.add(punto);
-                }
+            if(resultados.size() == 0) {
+                return new ArrayList<>();
             }
 
-            puntosFiltrados.sort((p1, p2) -> Double.compare(
-                    calcularDistancia(latitud, longitud, p1.getLatitud(), p1.getLongitud()),
-                    calcularDistancia(latitud, longitud, p2.getLatitud(), p2.getLongitud())
-            ));
+                // Mapear los resultados crudos a objetos PuntoDeColocacion
+                List<PuntoDeColocacion> puntos = resultados.stream()
+                        .map(row -> new PuntoDeColocacion(((Number) row[0]).doubleValue(), ((Number) row[1]).doubleValue()))
+                        .collect(Collectors.toList());
 
-            return puntosFiltrados;
+                System.out.println(puntos.get(0).getLatitud());
+
+                // Filtrar y ordenar los puntos
+                List<PuntoDeColocacion> puntosFiltrados = new ArrayList<>();
+                for (PuntoDeColocacion punto : puntos) {
+                    if (calcularDistancia(latitud, longitud, punto.getLatitud(), punto.getLongitud()) <= radio) {
+                        puntosFiltrados.add(punto);
+                    }
+                }
+
+                puntosFiltrados.sort((p1, p2) -> Double.compare(
+                        calcularDistancia(latitud, longitud, p1.getLatitud(), p1.getLongitud()),
+                        calcularDistancia(latitud, longitud, p2.getLatitud(), p2.getLongitud())
+                ));
+
+                return puntosFiltrados;
+
         } finally {
             em.close();
             emf.close();
